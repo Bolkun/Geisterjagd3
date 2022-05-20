@@ -17,6 +17,8 @@ public class Raycaster : MonoBehaviour
     private bool end = false;
     public LayerMask ignoreLayer;
     public AudioSource startSound;
+    public AudioSource pauseSound;
+    public AudioSource resumeSound;
     public AudioSource endSound;
 
     [SerializeField] 
@@ -67,7 +69,7 @@ public class Raycaster : MonoBehaviour
 
                         if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
                             if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
-                                startSound.Play();
+                                resumeSound.Play();
                                 this.animator.Play("idle");
                                 moveAlongPathScript.Play();
                                 pause = false;
@@ -81,7 +83,7 @@ public class Raycaster : MonoBehaviour
 
                         if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
                             if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
-                                startSound.Play();
+                                pauseSound.Play();
                                 this.animator.Play("idle");
                                 moveAlongPathScript.Pause();
                                 pause = true;
