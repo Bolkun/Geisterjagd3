@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathSettings:
-    LocationPath: {fileID: 11400000, guid: aa20db5c2b01f734eb3d50729067836f, type: 2}
+    LocationPath: {fileID: 11400000, guid: 11aae870dc91c7e43844c3a07fa10fb5, type: 2}
     SplineSampleCount: 250
     LineRenderer: {fileID: 0}
   PlaybackSettings:
