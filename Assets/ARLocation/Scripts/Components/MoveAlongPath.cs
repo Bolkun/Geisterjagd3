@@ -113,6 +113,7 @@ namespace ARLocation
         public StateData state = new StateData();
         public ARLocationProvider locationProvider;
         private float u;
+        public bool endReached = false;
         private GameObject arLocationRoot;
         private Transform mainCameraTransform;
         private bool useLineRenderer;
@@ -320,6 +321,7 @@ namespace ARLocation
             {
                 u = 0;
                 state.Playing = false;
+                endReached = true;
             }
             else
             {

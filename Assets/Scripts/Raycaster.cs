@@ -12,6 +12,8 @@ public class Raycaster : MonoBehaviour
 
     private bool start = true;
     private bool playing = false;
+    private int ignoreOneTime = 0;
+    private bool pause = false;
     private bool end = false;
     public LayerMask ignoreLayer;
     public AudioSource startSound;
@@ -56,9 +58,42 @@ public class Raycaster : MonoBehaviour
             }
         }
 
-        if (playing == true && moveAlongPathScript.state.Playing == false) {
-            playing = false;
-            end = true;
+        if (playing == true) {
+            if (moveAlongPathScript.endReached == false) {  
+                if (pause == true) {
+                    if (Input.GetMouseButtonDown(0)) {
+                        RaycastHit hit;
+                        Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
+
+                        if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
+                            if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
+                                startSound.Play();
+                                this.animator.Play("idle");
+                                moveAlongPathScript.Play();
+                                pause = false;
+                            }
+                        }
+                    }
+                } else {
+                    if (Input.GetMouseButtonDown(0) && ignoreOneTime == 1) {
+                        RaycastHit hit;
+                        Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
+
+                        if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
+                            if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
+                                startSound.Play();
+                                this.animator.Play("idle");
+                                moveAlongPathScript.Pause();
+                                pause = true;
+                            }
+                        }
+                    }
+                }
+                ignoreOneTime = 1;
+            } else {
+                playing = false;
+                end = true;
+            }
         }
 
         if (end == true) {
