@@ -64,12 +64,12 @@ public class Raycaster : MonoBehaviour
         // Play
         if (playing == true) {
             if (moveAlongPathScript.endReached == false) {  
-                // Pause
                 if (pause == true) {
                     if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
                         Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
 
+                        // Resume
                         if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
                             if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
                                 resumeSound.Play();
@@ -80,11 +80,11 @@ public class Raycaster : MonoBehaviour
                         }
                     }
                 } else {
-                    // Resume
                     if (Input.GetMouseButtonDown(0) && ignoreOneTime == 1) {
                         RaycastHit hit;
                         Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
-
+                        
+                        // Pause
                         if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
                             if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
                                 pauseSound.Play();
