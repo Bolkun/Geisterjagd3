@@ -41,6 +41,7 @@ public class Raycaster : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Start
         if (start == true) {
             this.animator.Play("castSpellB");
             if (Input.GetMouseButtonDown(0)) {
@@ -60,8 +61,10 @@ public class Raycaster : MonoBehaviour
             }
         }
 
+        // Play
         if (playing == true) {
             if (moveAlongPathScript.endReached == false) {  
+                // Pause
                 if (pause == true) {
                     if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
@@ -77,6 +80,7 @@ public class Raycaster : MonoBehaviour
                         }
                     }
                 } else {
+                    // Resume
                     if (Input.GetMouseButtonDown(0) && ignoreOneTime == 1) {
                         RaycastHit hit;
                         Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
@@ -98,6 +102,7 @@ public class Raycaster : MonoBehaviour
             }
         }
 
+        // End
         if (end == true) {
             lookAtPlayerScript.on = true;
             this.animator.Play("castSpellA");

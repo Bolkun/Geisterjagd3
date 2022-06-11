@@ -16,7 +16,7 @@ public class LookAtPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Look at player if on from different angles of the camera
+    /// Look at player if on from different angles of the camera. In the beginning and in the end.
     /// </summary>
     void Update()
     {
