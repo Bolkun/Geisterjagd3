@@ -12,7 +12,7 @@ public class LookAtPlayer : MonoBehaviour
     /// </summary>
     void Start()
     {
-        on = true;
+        //on = true;
     }
 
     /// <summary>
@@ -20,7 +20,7 @@ public class LookAtPlayer : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (on)
-            transform.LookAt(player.transform); 
+        // if (on)
+        //     transform.LookAt(player.transform); 
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c63d15506dd69f48a388fc9c4976162, type: 3}
-  m_Name: AR Location Path Home Depth API
+  m_Name: AR Location Path Home Parkplatz
   m_EditorClassIdentifier: 
   Locations:
   - Latitude: 51.031746
