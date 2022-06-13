@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ARLocation;
+using TMPro;
 
 public class Raycaster : MonoBehaviour
 {
     [SerializeField]
     private Camera arCamera;
     public GameObject ghostContainer;
+
+    [SerializeField]
+    private TextMeshProUGUI m_TextComponent;
 
     private bool start = true;
     private bool playing = false;
@@ -32,6 +36,9 @@ public class Raycaster : MonoBehaviour
     /// </summary>
     void Start()
     {
+        m_TextComponent.text = "test";
+        
+
         lookAtPlayerScript = ghostContainer.GetComponent<LookAtPlayer>();
         moveAlongPathScript = ghostContainer.GetComponent<MoveAlongPath>();
     }
