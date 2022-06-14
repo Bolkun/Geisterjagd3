@@ -114,14 +114,14 @@ namespace ARLocation
         public ARLocationProvider locationProvider;
         private float u;
         public bool endReached = false;
-        private GameObject arLocationRoot;
-        private Transform mainCameraTransform;
+        public GameObject arLocationRoot;
+        public Transform mainCameraTransform;
         private bool useLineRenderer;
         private bool hasInitialized;
         private GroundHeight groundHeight;
 
-        private bool HeightRelativeToDevice => PlacementSettings.AltitudeMode == AltitudeMode.DeviceRelative;
-        private bool HeightGroundRelative => PlacementSettings.AltitudeMode == AltitudeMode.GroundRelative;
+        public bool HeightRelativeToDevice => PlacementSettings.AltitudeMode == AltitudeMode.DeviceRelative;
+        public bool HeightGroundRelative => PlacementSettings.AltitudeMode == AltitudeMode.GroundRelative;
 
         /// <summary>
         /// Change the `LocationPath` the GameObject will traverse. This will

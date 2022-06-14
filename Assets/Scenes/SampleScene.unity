@@ -1019,8 +1019,8 @@ MonoBehaviour:
   PlaybackSettings:
     Speed: 3
     Up: {x: 0, y: 1, z: 0}
-    Loop: 0
-    AutoPlay: 0
+    Loop: 1
+    AutoPlay: 1
     Offset: 0
   PlacementSettings:
     AltitudeMode: 0
@@ -1035,6 +1035,8 @@ MonoBehaviour:
     Speed: 0
   locationProvider: {fileID: 0}
   endReached: 0
+  arLocationRoot: {fileID: 0}
+  mainCameraTransform: {fileID: 0}
 --- !u!114 &815341788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,8 +1214,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 115, y: -39}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 534.96344, y: -271.476}
+  m_SizeDelta: {x: 1039.927, y: 514.952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241754835
 MonoBehaviour:
@@ -1235,7 +1237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Points
+  m_text: Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
