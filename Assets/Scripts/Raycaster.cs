@@ -9,6 +9,7 @@ public class Raycaster : MonoBehaviour
     [SerializeField]
     private Camera arCamera;
     public GameObject ghostContainer;
+    public GameObject reaperLegecy;
 
     private bool start = true;
     private bool playing = false;
@@ -34,6 +35,7 @@ public class Raycaster : MonoBehaviour
     {
         lookAtPlayerScript = ghostContainer.GetComponent<LookAtPlayer>();
         moveAlongPathScript = ghostContainer.GetComponent<MoveAlongPath>();
+        reaperLegecy.SetActive(false);    // false to hide, true to show
     }
 
     /// <summary>
@@ -43,19 +45,23 @@ public class Raycaster : MonoBehaviour
     {
         // Start
         if (start == true) {
-            this.animator.Play("castSpellB");
-            if (Input.GetMouseButtonDown(0)) {
-                RaycastHit hit;
-                Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
+            if (moveAlongPathScript.bPouseOneTime == false) {
+                reaperLegecy.SetActive(true);
 
-                if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
-                    if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
-                        start = false;
-                        startSound.Play();
-                        this.animator.Play("idle");
-                        lookAtPlayerScript.on = false;
-                        moveAlongPathScript.Play();
-                        playing = true;
+                this.animator.Play("castSpellB");
+                if (Input.GetMouseButtonDown(0)) {
+                    RaycastHit hit;
+                    Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
+
+                    if (Physics.Raycast(ray, out hit, 200.0f, ~ignoreLayer)) {
+                        if (hit.transform != null && GetName(hit.transform.gameObject) == "GhostContainer") {
+                            start = false;
+                            startSound.Play();
+                            this.animator.Play("idle");
+                            lookAtPlayerScript.on = false;
+                            moveAlongPathScript.Play();
+                            playing = true;
+                        }
                     }
                 }
             }

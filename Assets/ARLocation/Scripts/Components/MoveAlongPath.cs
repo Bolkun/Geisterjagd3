@@ -119,6 +119,7 @@ namespace ARLocation
         private bool useLineRenderer;
         private bool hasInitialized;
         private GroundHeight groundHeight;
+        public bool bPouseOneTime;
 
         private bool HeightRelativeToDevice => PlacementSettings.AltitudeMode == AltitudeMode.DeviceRelative;
         private bool HeightGroundRelative => PlacementSettings.AltitudeMode == AltitudeMode.GroundRelative;
@@ -154,6 +155,8 @@ namespace ARLocation
 
             Initialize();
             hasInitialized = true;
+
+            bPouseOneTime = true;
         }
 
         private void Initialize()
@@ -336,6 +339,11 @@ namespace ARLocation
                 state.Spline.DrawCurveWithLineRenderer(PathSettings.LineRenderer,
                     p => MathUtils.SetY(p, p.y + groundY)); //t.TransformVector(p - state.Translation));
             }
+            if (bPouseOneTime) {
+                bPouseOneTime = false;
+                Pause();
+            }
+                
         }
 
         private void OnDestroy()
